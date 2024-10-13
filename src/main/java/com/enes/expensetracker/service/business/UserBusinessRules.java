@@ -3,24 +3,20 @@ package com.enes.expensetracker.service.business;
 
 import com.enes.expensetracker.exception.type.BusinessException;
 import com.enes.expensetracker.model.User;
-import com.enes.expensetracker.model.dto.request.User.UserRequest;
-import com.enes.expensetracker.model.dto.request.User.UserResponse;
+import com.enes.expensetracker.model.dto.request.user.UserRequest;
+import com.enes.expensetracker.model.dto.response.user.UserResponse;
 import com.enes.expensetracker.repository.UserRepository;
-import com.enes.expensetracker.service.TransactionService;
 import com.enes.expensetracker.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Component
 public class UserBusinessRules {
 
     private final UserRepository userRepository;
-    private final TransactionService transactionService;
-    private final UserMapper mapper;
+
 
     public void mergeUser(User user, UserRequest request) {
         if (StringUtils.isNoneBlank(request.firstName())) {
@@ -39,7 +35,7 @@ public class UserBusinessRules {
 
     // User nesnesini UserResponse'a dönüştürür
     public UserResponse convertToUserResponse(User user) {
-        return mapper.fromUser(user);
+        return UserMapper.INSTANCE.toUserResponse(user);
     }
 
     public User getUserIfExist(Long id) {
@@ -50,7 +46,7 @@ public class UserBusinessRules {
     // Kullanıcı var mı diye kontrol eder ve UserResponse nesnesini döner
     public UserResponse getUserResponseIfExist(Long id) {
         User user = getUserIfExist(id); // Aynı kontrolü tekrar etmemek için bu metod kullanılır
-        return mapper.fromUser(user);
+        return UserMapper.INSTANCE.toUserResponse(user);
     }
 
 
