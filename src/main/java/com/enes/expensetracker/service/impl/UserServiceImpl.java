@@ -1,13 +1,11 @@
 package com.enes.expensetracker.service.impl;
 
-import com.enes.expensetracker.exception.type.BusinessException;
-import com.enes.expensetracker.model.dto.request.User.UserRequest;
-import com.enes.expensetracker.model.dto.request.User.UserResponse;
+import com.enes.expensetracker.model.dto.request.user.UserRequest;
+import com.enes.expensetracker.model.dto.response.user.UserResponse;
 import com.enes.expensetracker.repository.UserRepository;
 import com.enes.expensetracker.service.UserService;
 import com.enes.expensetracker.service.business.UserBusinessRules;
 import com.enes.expensetracker.service.mapper.UserMapper;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,22 +18,22 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserBusinessRules userBusinessRules;
-    private final UserMapper mapper;
+
 
     @Override
     public UserResponse createUser(UserRequest request) {
         // E-posta ile aynı kullanıcı var mı kontrolü
         userBusinessRules.checkIfEmailExists(request.email());
 
-        var user = userRepository.save(mapper.toUser(request));
-        return mapper.fromUser(user);
+        var user = userRepository.save(UserMapper.INSTANCE.toUser(request));
+        return UserMapper.INSTANCE.toUserResponse(user);
     }
 
     @Override
     public List<UserResponse> findAllUsers() {
         return  userRepository.findAll()
                 .stream()
-                .map(mapper::fromUser)
+                .map(UserMapper.INSTANCE::toUserResponse)
                 .collect(Collectors.toList());
     }
 
