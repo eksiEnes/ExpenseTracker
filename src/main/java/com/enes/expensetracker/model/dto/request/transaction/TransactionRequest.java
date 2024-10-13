@@ -1,4 +1,4 @@
-package com.enes.expensetracker.model.dto.request.Transaction;
+package com.enes.expensetracker.model.dto.request.transaction;
 
 import jakarta.validation.constraints.*;
 
@@ -9,11 +9,11 @@ public record TransactionRequest (
 
         @NotNull(message = "Transaction description can not be null.")
         @Size(min = 2, max = 100, message = "Description must be between 2 and 100 characters.")
-        String Description,
+        String description,
 
         @Positive(message = "Amount must be positive.")
         @Max(value = 99999, message = "Amount must be realistic")
-        BigDecimal Amount,
+        BigDecimal amount,
 
         @NotNull(message = "User id can not be null.")
         Long userid
