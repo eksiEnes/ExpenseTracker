@@ -4,30 +4,18 @@ import com.enes.expensetracker.model.User;
 import com.enes.expensetracker.model.dto.request.User.UserRequest;
 
 import com.enes.expensetracker.model.dto.request.User.UserResponse;
-import org.springframework.stereotype.Service;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-@Service
-public class UserMapper {
 
-    public User toUser(UserRequest request){
-        if(request == null){
-            return null;
-        }
-        return User.builder()
-                .id(request.id())
-                .firstName(request.firstName())
-                .lastName(request.lastName())
-                .email(request.email())
-                .password(request.password())
-                .build();
-    }
+@Mapper
+public interface UserMapper {
 
-    public UserResponse fromUser(User user){
-        return new UserResponse(
-                user.getFirstName(),
-                user.getLastName(),
-                user.getEmail()
-        );
-    }
+    UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
+
+    User toUser(UserRequest request);
+
+    UserResponse toUserResponse(User user);
+
 
 }
