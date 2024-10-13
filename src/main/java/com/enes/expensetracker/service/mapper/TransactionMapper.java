@@ -2,8 +2,8 @@ package com.enes.expensetracker.service.mapper;
 
 
 import com.enes.expensetracker.model.Transaction;
-import com.enes.expensetracker.model.dto.request.Transaction.TransactionRequest;
-import com.enes.expensetracker.model.dto.request.Transaction.TransactionResponse;
+import com.enes.expensetracker.model.dto.request.transaction.TransactionRequest;
+import com.enes.expensetracker.model.dto.response.transaction.TransactionResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

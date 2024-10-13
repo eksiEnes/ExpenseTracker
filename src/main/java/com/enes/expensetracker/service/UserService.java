@@ -1,8 +1,8 @@
 package com.enes.expensetracker.service;
 
 
-import com.enes.expensetracker.model.dto.request.User.UserRequest;
-import com.enes.expensetracker.model.dto.request.User.UserResponse;
+import com.enes.expensetracker.model.dto.request.user.UserRequest;
+import com.enes.expensetracker.model.dto.response.user.UserResponse;
 import jakarta.validation.Valid;
 
 import java.util.List;

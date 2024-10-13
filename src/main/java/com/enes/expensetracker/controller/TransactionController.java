@@ -2,9 +2,8 @@ package com.enes.expensetracker.controller;
 
 
 
-import com.enes.expensetracker.model.Transaction;
-import com.enes.expensetracker.model.dto.request.Transaction.TransactionRequest;
-import com.enes.expensetracker.model.dto.request.Transaction.TransactionResponse;
+import com.enes.expensetracker.model.dto.request.transaction.TransactionRequest;
+import com.enes.expensetracker.model.dto.response.transaction.TransactionResponse;
 import com.enes.expensetracker.service.TransactionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

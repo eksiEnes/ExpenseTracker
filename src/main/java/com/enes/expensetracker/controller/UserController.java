@@ -1,10 +1,9 @@
 package com.enes.expensetracker.controller;
 
-import com.enes.expensetracker.model.dto.request.User.UserRequest;
-import com.enes.expensetracker.model.dto.request.User.UserResponse;
+import com.enes.expensetracker.model.dto.request.user.UserRequest;
+import com.enes.expensetracker.model.dto.response.user.UserResponse;
 import com.enes.expensetracker.service.UserService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
