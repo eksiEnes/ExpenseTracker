@@ -1,4 +1,4 @@
-package com.enes.expensetracker.model.dto.request.User;
+package com.enes.expensetracker.model.dto.request.user;
 
 import jakarta.validation.constraints.*;
 
